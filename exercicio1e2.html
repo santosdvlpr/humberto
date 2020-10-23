@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOF</title>
+</head>
+<body>
+    <h4>exercícios 1 e 2  moulo bonus - Programação funcional - reduce </4>
+
+
+    <script>
+
+
+
+
+        /* exercícios 1 e 2  moulo bonus - Programação funcional - reduce */
+        
+        const produtos=[
+            {id:'001', nome: 'bola de futebol', categoria: 'brinquedo', preco: 10.00 },
+            {id:'002', nome: 'Guarda-chuva',    categoria: 'utilidade', preco: 5.00  },
+            {id:'003', nome: 'Cadeira',  categoria: 'móveis',    preco: 80.00 },
+            {id:'004', nome: 'Fogão a gás', categoria: 'cozinha', preco: 120.00},
+            {id:'005', nome: 'Mesa', categoria: 'móveis', preco: 400.00 },
+            {id:'006', nome: 'Notebook', categoria: 'eletrônicos', preco: 1200.00},
+        ]
+
+
+        function agrupaPor(chave){
+            
+            function faixa(de,ate){
+                return function(produto){
+                    return produto.preco >= de && produto.preco <= ate    
+                }
+            }
+
+            function acima(de){
+                return function(produto){
+                    return produto.preco > de    
+                }
+            }
+
+            const faixa1_0_a_100 = produtos.filter(faixa(0,100))
+            const faixa2_101_a_500 = produtos.filter(faixa(101,500))
+            const faixa3_acima_de_500 = produtos.filter(acima(500))
+
+            
+            return function(acc,produto,produtos){
+                
+                /* Agrupamento por Categoria */
+                
+                if(chave==='categoria'){
+                    return (!acc[produto.categoria]) 
+                    ?{...acc,[produto.categoria]: [produto]} 
+                    :{...acc,[produto.categoria]: [...acc[produto.categoria], produto]} 
+                }
+                
+                /* Agrupamento por Faixa de preco */
+                
+                if(chave==='faixaDePreco'){
+                    
+                    if(faixa1_0_a_100.indexOf(produto)>=0){
+                        return (!acc['faixa1_0-a-100']) 
+                        ?{...acc,['faixa1_0-a-100']: [produto]} 
+                        :{...acc,['faixa1_0-a-100']: [...acc['faixa1_0-a-100'], produto]}
+                    }else if(faixa2_101_a_500.indexOf(produto)>=0){
+                        return (!acc['faixa2_101-a-500']) 
+                        ?{...acc,['faixa2_101-a-500']: [produto]} 
+                        :{...acc,['faixa2_101-a-500']: [...acc['faixa2_101-a-500'], produto]}
+                    }else{
+                        return (!acc['faixa3_acima_de_500']) 
+                        ?{...acc,['faixa3']: [produto]} 
+                        :{...acc,['faixa3_acima_de_500']: [...acc['faixa3_acima_de_500'], produto]}
+                    } 
+                }
+            }
+        }
+        
+        console.log('produtos por categoria')
+        console.log(produtos.reduce(agrupaPor('categoria'),{}))
+        
+        console.log('produtos por faixa de preco')
+        console.log(produtos.reduce(agrupaPor('faixaDePreco'),{}))   </script>
+
+            
+              </script>
+</body>
+</html>
