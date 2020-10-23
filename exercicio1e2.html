@@ -50,9 +50,7 @@
                 /* Agrupamento por Categoria */
                 
                 if(chave==='categoria'){
-                    return (!acc[produto.categoria]) 
-                    ?{...acc,[produto.categoria]: [produto]} 
-                    :{...acc,[produto.categoria]: [...acc[produto.categoria], produto]} 
+                    return ( {...acc,[produto.categoria]: [...( acc[produto.categoria] || [] ), produto]} )    
                 }
                 
                 /* Agrupamento por Faixa de preco */
@@ -60,17 +58,12 @@
                 if(chave==='faixaDePreco'){
                     
                     if(faixa1_0_a_100.indexOf(produto)>=0){
-                        return (!acc['faixa1_0-a-100']) 
-                        ?{...acc,['faixa1_0-a-100']: [produto]} 
-                        :{...acc,['faixa1_0-a-100']: [...acc['faixa1_0-a-100'], produto]}
+                        return ( {...acc,['faixa1_0-a-100']: [...( acc['faixa1_0-a-100'] || [] ), produto]})
+                    
                     }else if(faixa2_101_a_500.indexOf(produto)>=0){
-                        return (!acc['faixa2_101-a-500']) 
-                        ?{...acc,['faixa2_101-a-500']: [produto]} 
-                        :{...acc,['faixa2_101-a-500']: [...acc['faixa2_101-a-500'], produto]}
+                        return ( {...acc,['faixa2_101-a-500']: [...( acc['faixa2_101-a-500'] || [] ), produto]})
                     }else{
-                        return (!acc['faixa3_acima_de_500']) 
-                        ?{...acc,['faixa3']: [produto]} 
-                        :{...acc,['faixa3_acima_de_500']: [...acc['faixa3_acima_de_500'], produto]}
+                        return ( {...acc,['faixa3_acima_de_500']: [...(acc['faixa3_acima_de_500'] || [] ), produto]})
                     } 
                 }
             }
