@@ -6,7 +6,7 @@
     <title>HOF</title>
 </head>
 <body>
-    <h4>exercícios 1 e 2  moulo bonus - Programação funcional - reduce </4>
+    <h4>exercícios 1 e 2  moulo bonus - Programação funcional - reduce - REFATORADO</4>
 
 
     <script>
@@ -47,25 +47,17 @@
             
             return function(acc,produto,produtos){
                 
-                /* Agrupamento por Categoria */
-                
-                if(chave==='categoria'){
-                    return ( {...acc,[produto.categoria]: [...( acc[produto.categoria] || [] ), produto]} )    
-                }
-                
-                /* Agrupamento por Faixa de preco */
-                
-                if(chave==='faixaDePreco'){
+                return (chave==='faixaDePreco')
+                    // Agrupamento por faixa de preço
+                    ?(faixa1_0_a_100.indexOf(produto)>=0)
+                        ?( {...acc,['faixa1_0-a-100']: [...( acc['faixa1_0-a-100'] || [] ), produto]})
+                        :(faixa2_101_a_500.indexOf(produto)>=0)
+                            ? ( {...acc,['faixa2_101-a-500']: [...( acc['faixa2_101-a-500'] || [] ), produto]})
+                            :( {...acc,['faixa3_acima_de_500']: [...(acc['faixa3_acima_de_500'] || [] ), produto]})
                     
-                    if(faixa1_0_a_100.indexOf(produto)>=0){
-                        return ( {...acc,['faixa1_0-a-100']: [...( acc['faixa1_0-a-100'] || [] ), produto]})
-                    
-                    }else if(faixa2_101_a_500.indexOf(produto)>=0){
-                        return ( {...acc,['faixa2_101-a-500']: [...( acc['faixa2_101-a-500'] || [] ), produto]})
-                    }else{
-                        return ( {...acc,['faixa3_acima_de_500']: [...(acc['faixa3_acima_de_500'] || [] ), produto]})
-                    } 
-                }
+                    // Agrupamento por categoria
+                    :( {...acc,[produto.categoria]: [...( acc[produto.categoria] || [] ), produto]} )
+
             }
         }
         
