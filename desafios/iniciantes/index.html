@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imersão</title>
+
+<body>
+    <p>Idade: <input id="idade" type="text"/> Sexo:  <select id="sexo"><option>M</option><option>F</option></select></p> 
+    <p>Altura: <input id="altura" type="text"/> Pêso:  <input id="peso" type="text"/></p> 
+    <p><span id="indice"></span><span id="descricao"></span></p>
+    <p><span id="taxa"></span></p>
+
+    <p>Montante a conveter:
+        <select id="moedaorigem">
+            <option>R$</option>
+            <option selected>U$</option>
+            <option>LB</option>
+            <option>EUR</option>
+            <option>IEN</option>
+        </select>
+         <input id="valor" type="text" value="1.00"/></p>
+         Converter para: 
+         <select id="moedadestino">
+            <option>R$</option>
+            <option>U$</option>
+            <option>LB</option>
+            <option>EUR</option>
+            <option>IEN</option>
+        </select>
+        <p><span id="convertido"></span></p>
+
+        <p>Salário Bruto: <input id="salario" type="text"/></p> 
+        <p><span id="descinss"></span></p> 
+        <p><span id="descirpf"></span></p> 
+        <p><span id="salarioliquido"></span></p> 
+ 
+        <p><button id="btn">Botão</button></p>
+
+
+    <script src="imc.js"></script>    
+    <script src="basal.js"></script>    
+    <script src="conversor.js"></script>    
+    <script src="salario.js"></script>    
+</body>
+</html>

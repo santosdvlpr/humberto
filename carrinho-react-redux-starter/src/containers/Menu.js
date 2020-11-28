@@ -51,12 +51,14 @@ const mapDispatchToProps = dispatch => {
     },
     ...bindActionCreators(produtosCreators, dispatch)   // dispatch automático
 
-    //buscaPorCategoria: function(categoria) {
-    //  dispatch(produtosCreators.buscaProdutosPorCategoria(categoria))
-    //},
-    //buscaTodas: function(categoria) {
-    //  dispatch(produtosCreators.buscaProdutos(categoria))
-    //}
+    /** 
+      buscaPorCategoria: function(categoria) {
+      dispatch(produtosCreators.buscaProdutosPorCategoria(categoria))
+    },
+    buscaTodas: function(categoria) {
+      dispatch(produtosCreators.buscaProdutos(categoria))
+    }
+    */
 
 
   }
